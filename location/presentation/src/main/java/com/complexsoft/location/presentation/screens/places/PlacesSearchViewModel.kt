@@ -42,7 +42,7 @@ class PlacesSearchViewModel @Inject constructor(
         _query.value = q
     }
 
-    fun searchRestaurants(q: String) = viewModelScope.launch {
+    private fun searchRestaurants(q: String) = viewModelScope.launch {
         searchRestaurantsUseCase(q).collectLatest {
             _search.value = it
         }

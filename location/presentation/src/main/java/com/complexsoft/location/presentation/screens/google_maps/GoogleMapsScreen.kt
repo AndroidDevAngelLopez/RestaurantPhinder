@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import com.complexsoft.common.utils.navigation.LocationRoutes
 import com.complexsoft.common.utils.navigation.events.LocationEvent
 import com.complexsoft.location.data.model.PlaceDetails
+import com.complexsoft.location.data.util.Constants.API_KEY
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -61,7 +62,7 @@ fun GoogleMapsScreen(
                     viewModel.getDirections(
                         start = LatLng(location.latitude, location.longitude),
                         destination = destination,
-                        key = "AIzaSyBJStR2-XAFQQcoYF3b04yinBraWAIAO1U"
+                        key = API_KEY
                     )
                 })
 

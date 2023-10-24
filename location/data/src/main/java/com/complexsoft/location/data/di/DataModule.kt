@@ -9,6 +9,7 @@ import com.complexsoft.location.data.datasource.local.PlacesDatabase
 import com.complexsoft.location.data.datasource.network.LocationService
 import com.complexsoft.location.data.repository.LocationRepository
 import com.complexsoft.location.data.repository.LocationRepositoryImpl
+import com.complexsoft.location.data.util.Constants.API_KEY
 import com.complexsoft.location.data.util.Constants.DATABASE_NAME
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -39,7 +40,7 @@ object DataModule {
     @Singleton
     @Provides
     fun providePlacesClient(@ApplicationContext context: Context): PlacesClient {
-        Places.initialize(context, "AIzaSyBJStR2-XAFQQcoYF3b04yinBraWAIAO1U")
+        Places.initialize(context, API_KEY)
         return Places.createClient(context)
     }
 
@@ -52,10 +53,7 @@ object DataModule {
         localDataSource: LocalDataSource
     ): LocationRepository {
         return LocationRepositoryImpl(
-            fusedLocationProviderClient,
-            placesClient,
-            locationService,
-            localDataSource
+            fusedLocationProviderClient, placesClient, locationService, localDataSource
         )
     }
 
